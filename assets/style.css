@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+html, body, [class*="css"] {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Sidebar Styling - Dark Theme for Sidebar */
+[data-testid="stSidebar"] {
+    background-color: #0f172a !important; /* Dark slate blue */
+}
+
+/* Ensure sidebar text is readable against dark background */
+[data-testid="stSidebar"] * {
+    color: #e2e8f0 !important;
+}
+
+[data-testid="stSidebar"] [data-baseweb="select"] * {
+    color: #0f172a !important; /* Keep select dropdown text dark */
+}
+
+/* Metric text alignment */
+.metric-container {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.metric-label {
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.metric-value {
+    color: #0f172a;
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0;
+}
+
+/* Remove card styling from charts, make them blend into the white background */
+.stPlotlyChart {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+/* Standard dataframe styling override */
+[data-testid="stDataFrame"] {
+    background: #0f172a;
+    border-radius: 8px;
+    padding: 10px;
+}
