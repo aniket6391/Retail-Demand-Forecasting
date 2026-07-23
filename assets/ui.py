@@ -8,23 +8,12 @@ def get_base64_of_bin_file(bin_file):
     return base64.b64encode(data).decode()
 
 def add_logo():
+    # Adding logo directly to sidebar as an image to make it larger
     try:
-        img_base64 = get_base64_of_bin_file("assets/logo.png")
-        if img_base64:
-            st.markdown(
-                f'''
-                <style>
-                [data-testid="stSidebarNav"] {{
-                    background-image: url("data:image/png;base64,{img_base64}");
-                    background-repeat: no-repeat;
-                    padding-top: 220px;
-                    background-position: center 30px;
-                    background-size: 200px;
-                }}
-                </style>
-                ''',
-                unsafe_allow_html=True,
-            )
+        col1, col2, col3 = st.sidebar.columns([1, 8, 1])
+        with col2:
+            st.image("assets/logo.png", use_column_width=True)
+        st.sidebar.markdown("<br>", unsafe_allow_html=True)
     except Exception:
         pass
 
