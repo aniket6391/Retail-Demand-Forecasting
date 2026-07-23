@@ -8,12 +8,26 @@ def get_base64_of_bin_file(bin_file):
     return base64.b64encode(data).decode()
 
 def add_logo():
-    # Adding logo directly to sidebar as an image to make it larger
     try:
-        col1, col2, col3 = st.sidebar.columns([1, 8, 1])
-        with col2:
-            st.image("assets/logo.png", use_column_width=True)
-        st.sidebar.markdown("<br>", unsafe_allow_html=True)
+        # Use native st.logo to keep it at the TOP
+        st.logo("assets/logo.png")
+        
+        # Inject CSS to force the native logo to be larger
+        st.markdown(
+            """
+            <style>
+            /* Target the Streamlit logo container */
+            [data-testid="stLogo"] {
+                height: 8rem !important;
+            }
+            [data-testid="stLogo"] img {
+                max-height: 8rem !important;
+                height: 8rem !important;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
     except Exception:
         pass
 
