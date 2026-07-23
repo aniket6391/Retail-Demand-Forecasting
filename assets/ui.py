@@ -9,27 +9,24 @@ def get_base64_of_bin_file(bin_file):
 
 def add_logo():
     try:
-        # Use native st.logo if available (Streamlit >= 1.35.0)
-        st.logo("assets/logo.png")
-    except AttributeError:
-        try:
-            img_base64 = get_base64_of_bin_file("assets/logo.png")
+        img_base64 = get_base64_of_bin_file("assets/logo.png")
+        if img_base64:
             st.markdown(
                 f'''
                 <style>
                 [data-testid="stSidebarNav"] {{
                     background-image: url("data:image/png;base64,{img_base64}");
                     background-repeat: no-repeat;
-                    padding-top: 150px;
-                    background-position: 20px 20px;
-                    background-size: 120px;
+                    padding-top: 220px;
+                    background-position: center 30px;
+                    background-size: 200px;
                 }}
                 </style>
                 ''',
                 unsafe_allow_html=True,
             )
-        except Exception:
-            pass
+    except Exception:
+        pass
 
 def kpi_card(title, value, color, icon):
     st.markdown(f'''
